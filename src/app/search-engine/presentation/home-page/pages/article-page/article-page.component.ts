@@ -28,6 +28,7 @@ export class ArticlePageComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.route.params.subscribe((params) => {
       this.scopusId = params['scopusId'];
     });
@@ -55,5 +56,9 @@ export class ArticlePageComponent {
       this.router.createUrlTree(['profile/', scopus_id])
     );
     window.open(url, '_self');
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
