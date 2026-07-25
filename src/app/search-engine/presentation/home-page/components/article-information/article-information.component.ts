@@ -23,11 +23,14 @@ export class ArticleInformationComponent {
   size = 10;
   total = 0;
   isLoadingResults = true;
-  refreshTable$: BehaviorSubject<{ page: number, size: number, type?: string, years?: number[] }>
-    = new BehaviorSubject<{ page: number, size: number, type?: string, years?: number[] }>({
+  isFirstLoad: boolean = true;
+  isFiltering: boolean = false;
+  isPaginating: boolean = false;
+  refreshTable$: BehaviorSubject<{ page: number, size: number, years?: number[] }>
+    = new BehaviorSubject<{ page: number, size: number, years?: number[] }>({
       page: this.page,
       size: this.size
-    })
+    });
 
   articles$!: Observable<PaginationArticleResult>
 
@@ -79,17 +82,15 @@ export class ArticleInformationComponent {
         tap(() => {
           this.loading.emit(true);
         }),
-        switchMap(({ page, size, type, years }) => {
-          if (type) {
-            return this.articleService.getMostRelevantArticlesByQuery(this.query, page, size, type, years)
-          } else {
-            return this.articleService.getMostRelevantArticlesByQuery(this.query, page, size)
-          }
-        }
-        ),
+        switchMap(({ page, size, years }) => {
+          return this.articleService.getMostRelevantArticlesByQuery(this.query, page, size, years);
+        }),
         tap((response) => {
           this.loading.emit(false);
           this.isLoadingResults = false;
+          this.isFirstLoad = false;
+          this.isFiltering = false;
+          this.isPaginating = false;
           this.total = response.total;
 
           if (this.setYears && response.years && this.years.length === 0) {
@@ -103,11 +104,12 @@ export class ArticleInformationComponent {
           }
         }),
         catchError((error) => {
-          console.error('Error fetching data', error)
+          console.error('Error fetching data', error);
+          this.isFirstLoad = false;
           this.isFiltering = false;
           this.isPaginating = false;
-          this.loading.emit(false)
-          return []
+          this.loading.emit(false);
+          return [];
         })
       )
   }
@@ -196,14 +198,22 @@ export class ArticleInformationComponent {
     }
   }
 
-  onClickYearsFilter(type: string) {
+  applyFilters() {
+    this.page = 1;
+    const payload: { page: number; size: number; years?: number[] } = {
+      page: this.page,
+      size: this.size
+    };
     if (this.selectedYears.length > 0) {
-      payload.years = [...this.selectedYears]
+      payload.years = [...this.selectedYears];
     }
-
     this.isFiltering = true;
-    this.refreshTable$.next(payload)
+    this.refreshTable$.next(payload);
     this.updateQueryParams();
+  }
+
+  onClickYearsFilter(type?: string) {
+    this.applyFilters();
   }
 
   private updateQueryParams() {
