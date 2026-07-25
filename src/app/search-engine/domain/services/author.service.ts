@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { map, Observable, shareReplay } from 'rxjs';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   Author,
   AuthorResult, CoauthorInfo,
@@ -17,7 +17,7 @@ import {
   Word,
   YearsResponse
 } from "../../../shared/interfaces/dashboard.interface";
-import {ArticlesResponse} from "../../../shared/interfaces/article.interface";
+import { ArticlesResponse } from "../../../shared/interfaces/article.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,7 @@ export class AuthorService {
     return this.profileCache.get(key)!;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAuthorsByQuery(
     query: string,
@@ -74,7 +74,7 @@ export class AuthorService {
     return this.http.get<Author>(`${this.rootURL}/v2/authors/${id}`);
   }
 
-  getCoauthorsById(id: number): Observable<CoauthorInfo> {
+  getCoauthorsById(id: string | number): Observable<CoauthorInfo> {
     // Slice 2: deriva de la composicion v2 en vez de llamar directo a v1.
     return this.getAuthorProfile(id).pipe(map(p => p.coauthors as CoauthorInfo));
   }
@@ -134,7 +134,7 @@ export class AuthorService {
     return this.getAuthorProfile(scopus_id).pipe(map(p => (p.years || []) as AuthorYears[]));
   }
 
-  getLineChartInfo(scopus_id:string, name: string): Observable<LineChartInfo[]> {
+  getLineChartInfo(scopus_id: string, name: string): Observable<LineChartInfo[]> {
     return this.getYears(scopus_id).pipe(
       map(response => {
         console.log(response);
@@ -151,7 +151,7 @@ export class AuthorService {
     );
   }
 
-  getArticles(scopus_id:string):Observable<ArticlesResponse[]>{
+  getArticles(scopus_id: string): Observable<ArticlesResponse[]> {
     let params = new HttpParams().set('author_id', scopus_id.toString())
     return this.http.get<ArticlesResponse[]>(`${this.rootURL}/v2/articles/by-author`, {params});
   }
