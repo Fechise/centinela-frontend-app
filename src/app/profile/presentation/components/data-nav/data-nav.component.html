@@ -12,7 +12,7 @@
     <div [ngClass]="{'hidden': !navOpen, 'block': navOpen}" class="w-full md:block md:w-auto" id="navbar-default">
       <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-1">
         <div class="nav-item" *ngIf="isLoggedIn && !authorCentinela">
-          <a routerLink="about-me" routerLinkActive="active" ariaCurrentWhenActive="page"
+          <a routerLink="about-me" [replaceUrl]="true" routerLinkActive="active" ariaCurrentWhenActive="page"
             class="nav-link">
             <div class="nav-icon">
               <img src="assets/svg-data-nav/about-me.svg" alt="About me icon"
@@ -22,7 +22,7 @@
           </a>
         </div>
         <div class="nav-item" *ngIf="user?.scopus_id || authorCentinela">
-          <a routerLink="network" routerLinkActive="active" ariaCurrentWhenActive="page"
+          <a routerLink="network" [replaceUrl]="true" routerLinkActive="active" ariaCurrentWhenActive="page"
             class="nav-link">
             <div class="nav-icon">
               <img src="assets/svg-data-nav/network.svg" alt="Network icon"
@@ -32,7 +32,7 @@
           </a>
         </div>
         <div class="nav-item" *ngIf="user?.scopus_id || authorCentinela">
-          <a routerLink="article" routerLinkActive="active" ariaCurrentWhenActive="page"
+          <a routerLink="article" [replaceUrl]="true" routerLinkActive="active" ariaCurrentWhenActive="page"
             class="nav-link">
             <div class="nav-icon">
               <img src="assets/svg-data-nav/article.svg" alt="Article icon"
@@ -42,7 +42,7 @@
           </a>
         </div>
         <div class="nav-item" *ngIf="user?.scopus_id || authorCentinela">
-          <a routerLink="fingerprint" routerLinkActive="active" ariaCurrentWhenActive="page"
+          <a routerLink="fingerprint" [replaceUrl]="true" routerLinkActive="active" ariaCurrentWhenActive="page"
             class="nav-link">
             <div class="nav-icon">
               <img src="assets/svg-data-nav/fingerprint.svg" alt="Fingerprint icon"
@@ -52,7 +52,7 @@
           </a>
         </div>
         <div class="nav-item" *ngIf="isOwnProfile">
-          <a routerLink="my-groups" routerLinkActive="active" ariaCurrentWhenActive="page"
+          <a routerLink="my-groups" [replaceUrl]="true" routerLinkActive="active" ariaCurrentWhenActive="page"
             class="nav-link">
             <div class="nav-icon">
               <img src="assets/svg-data-nav/groups.svg" alt="My groups icon"

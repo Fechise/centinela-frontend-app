@@ -1,6 +1,6 @@
 <div class="flex flex-col md:flex-row justify-center gap-6 items-start mt-4 w-full px-4 xl:px-8">
   <app-filters-sidebar class="w-full md:w-72 flex-shrink-0" [isFirstLoad]="isFirstLoad" [isLoading]="isFiltering"
-    [isDisabled]="noResults">
+    [isDisabled]="noResults && selectedAffiliations.length === 0">
     <!-- Authors number -->
     <div class="py-2 px-4 font-semibold border-b border-gray-200 text-gray-700 bg-gray-50 text-sm tracking-wide">
       Number of authors
@@ -20,9 +20,9 @@
           [ngClass]="authorsNumber === 200 ? 'bg-red-700 text-white border-red-700' : 'bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100'"
           (click)="setAuthorsNumber(200)">200</button>
       </div>
+      <label for="authorsRange" class="form-label text-xs text-gray-600 font-medium mt-1 mb-0">Authors: <span class="font-bold text-gray-900">{{authorsNumber}}</span></label>
       <input id="authorsRange" type="range" class="form-range w-full" min="10" max="200" step="10" [(ngModel)]="authorsNumber"
         (change)="onAuthorsNumberChange()">
-      <label for="authorsRange" class="form-label text-xs text-gray-600 font-medium">Authors: <span class="font-bold text-gray-900">{{authorsNumber}}</span></label>
     </div>
 
     <!-- Affiliations -->

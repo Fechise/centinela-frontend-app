@@ -1,74 +1,231 @@
 <!-- dashboard-loader.component.html -->
-<div class="w-full max-w-6xl mx-auto flex flex-col justify-center items-center mb-6 mt-8 px-4 gap-y-3 animate-pulse">
+<div class="w-full max-w-6xl mx-auto flex flex-col justify-center items-center mb-6 mt-8 px-4 gap-y-4 animate-pulse">
 
-  <!-- Title skeleton (border-l-4, alineado a la izquierda) -->
-  <div class="border-l-4 border-gray-300 pl-4 mb-6 w-full text-left flex items-center h-10">
-    <div class="h-6 bg-gray-200 rounded w-64"></div>
+  <!-- Title skeleton -->
+  <div class="border-l-4 border-gray-300 pl-4 mb-2 w-full text-left flex items-center h-10">
+    <div class="h-7 bg-gray-300 rounded-md w-72"></div>
   </div>
 
-  <div class="w-full flex flex-col gap-y-3">
+  <div class="w-full flex flex-col gap-y-4">
 
-    <!-- Fila: filtros (ancho de contenido) + resumen (flex-grow) -->
-    <div class="flex flex-col md:flex-row mb-1 justify-between gap-1">
+    <!-- Fila 1: Filtros (izquierda) + Resumen de KPIs (derecha) -->
+    <div class="flex flex-col md:flex-row justify-between gap-4">
       <!-- Filtros -->
-      <div class="border-2 border-gray-200 rounded-md mr-1 mb-1 w-full md:w-64">
-        <div class="h-7 bg-gray-200 rounded-t-md w-full"></div>
-        <div class="flex flex-col items-center gap-y-2 px-2 pb-2 pt-2">
-          <div class="h-4 bg-gray-200 rounded w-32"></div>
-          <div class="h-4 bg-gray-200 rounded w-24"></div>
-          <div class="h-8 bg-gray-200 rounded w-full"></div>
+      <div class="border-2 border-gray-200 rounded-xl w-full md:w-64 bg-white shadow-sm overflow-hidden flex flex-col">
+        <div class="h-9 bg-gray-200 w-full border-b border-gray-100"></div>
+        <div class="flex flex-col items-start gap-y-3 p-4">
+          <div class="h-4 bg-gray-300 rounded w-36"></div>
+          <div class="flex gap-2 w-full pt-1">
+            <div class="h-7 bg-gray-200 rounded-md flex-1"></div>
+            <div class="h-7 bg-gray-200 rounded-md flex-1"></div>
+          </div>
+          <div class="h-4 bg-gray-300 rounded w-24 mt-2"></div>
+          <div class="h-9 bg-gray-200 rounded-lg w-full"></div>
         </div>
       </div>
-      <!-- Resumen (crece) -->
-      <div class="border-2 border-gray-200 rounded-md flex flex-col flex-grow mb-1">
-        <div class="h-7 bg-gray-200 rounded-t-md w-3/4 m-1"></div>
-        <div class="flex justify-around items-center px-2 pb-4 pt-2 gap-2">
-          <div class="h-12 w-12 bg-gray-200 rounded-full"></div>
-          <div class="h-12 w-12 bg-gray-200 rounded-full"></div>
-          <div class="h-12 w-12 bg-gray-200 rounded-full"></div>
+
+      <!-- Resumen de KPIs (3 Tarjetas con mini-graficos en sombra) -->
+      <div class="border-2 border-gray-200 rounded-xl flex-grow bg-white shadow-sm overflow-hidden flex flex-col">
+        <div class="h-9 bg-gray-200 w-1/3 m-3 rounded-md"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 pt-1 flex-grow items-center">
+          <!-- KPI 1 -->
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50/50">
+            <div class="h-12 w-12 bg-gray-300 rounded-full flex-shrink-0"></div>
+            <div class="flex flex-col gap-2 flex-grow">
+              <div class="h-3 bg-gray-300 rounded w-16"></div>
+              <div class="h-6 bg-gray-400 rounded w-20"></div>
+              <!-- Mini sparkline bar -->
+              <div class="flex items-end gap-1 h-3 mt-1">
+                <div class="w-1.5 h-[60%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[100%] bg-gray-400 rounded-t"></div>
+                <div class="w-1.5 h-[40%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[80%] bg-gray-300 rounded-t"></div>
+              </div>
+            </div>
+          </div>
+          <!-- KPI 2 -->
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50/50">
+            <div class="h-12 w-12 bg-gray-300 rounded-full flex-shrink-0"></div>
+            <div class="flex flex-col gap-2 flex-grow">
+              <div class="h-3 bg-gray-300 rounded w-20"></div>
+              <div class="h-6 bg-gray-400 rounded w-24"></div>
+              <!-- Mini sparkline bar -->
+              <div class="flex items-end gap-1 h-3 mt-1">
+                <div class="w-1.5 h-[40%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[70%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[100%] bg-gray-400 rounded-t"></div>
+                <div class="w-1.5 h-[50%] bg-gray-300 rounded-t"></div>
+              </div>
+            </div>
+          </div>
+          <!-- KPI 3 -->
+          <div class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50/50">
+            <div class="h-12 w-12 bg-gray-300 rounded-full flex-shrink-0"></div>
+            <div class="flex flex-col gap-2 flex-grow">
+              <div class="h-3 bg-gray-300 rounded w-14"></div>
+              <div class="h-6 bg-gray-400 rounded w-16"></div>
+              <!-- Mini sparkline bar -->
+              <div class="flex items-end gap-1 h-3 mt-1">
+                <div class="w-1.5 h-[80%] bg-gray-400 rounded-t"></div>
+                <div class="w-1.5 h-[50%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[90%] bg-gray-300 rounded-t"></div>
+                <div class="w-1.5 h-[60%] bg-gray-300 rounded-t"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Gráfico de línea (ancho completo) -->
-    <div class="w-full border-2 border-gray-200 rounded-md mb-2">
-      <div class="h-7 bg-gray-200 rounded-t-md w-1/2 m-1"></div>
-      <div class="w-full flex justify-center items-center p-2">
-        <div class="h-[250px] w-full bg-gray-200 rounded-lg"></div>
+    <!-- Fila 2: Gráfico de línea de tiempo (Timeline / Area Chart Skeleton) -->
+    <div class="w-full border-2 border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden p-4">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
+        <div class="h-6 bg-gray-300 rounded-md w-48"></div>
+        <div class="flex gap-2">
+          <div class="h-5 bg-gray-200 rounded w-16"></div>
+          <div class="h-5 bg-gray-200 rounded w-16"></div>
+        </div>
+      </div>
+      <!-- Contenedor del gráfico de área/línea -->
+      <div class="relative h-60 w-full flex flex-col justify-between pt-4">
+        <!-- Líneas guía de fondo (grid) -->
+        <div class="absolute inset-x-0 top-6 border-b border-gray-100"></div>
+        <div class="absolute inset-x-0 top-20 border-b border-gray-100"></div>
+        <div class="absolute inset-x-0 top-34 border-b border-gray-100"></div>
+        <div class="absolute inset-x-0 top-48 border-b border-gray-200"></div>
+        
+        <!-- SVG simulando curva analítica en sombra de grises -->
+        <svg class="w-full h-44 overflow-visible" viewBox="0 0 800 160" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="skeletonAreaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#cbd5e1" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#f1f5f9" stop-opacity="0.1" />
+            </linearGradient>
+          </defs>
+          <path d="M 0 140 Q 100 80 200 110 T 400 60 T 600 90 T 800 30 L 800 160 L 0 160 Z" fill="url(#skeletonAreaGrad)"></path>
+          <path d="M 0 140 Q 100 80 200 110 T 400 60 T 600 90 T 800 30" fill="none" stroke="#94a3b8" stroke-width="3.5" stroke-linecap="round"></path>
+          <!-- Puntos en la línea de tiempo -->
+          <circle cx="200" cy="110" r="5" fill="#64748b" />
+          <circle cx="400" cy="60" r="5" fill="#64748b" />
+          <circle cx="600" cy="90" r="5" fill="#64748b" />
+          <circle cx="800" cy="30" r="5" fill="#64748b" />
+        </svg>
+
+        <!-- Eje X (Años/Meses) -->
+        <div class="flex justify-between items-center px-4 pt-2">
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+          <div class="h-3 bg-gray-300 rounded w-10"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Gráfico de barras (ancho completo) -->
-    <div class="w-full border-2 border-gray-200 rounded-md mb-2">
-      <div class="h-7 bg-gray-200 rounded-t-md w-2/3 m-1"></div>
-      <div class="flex flex-col justify-center items-center p-2">
-        <div class="h-[300px] w-full bg-gray-200 rounded-lg"></div>
+    <!-- Fila 3: Gráfico de barras comparativas (Bar Chart Skeleton) -->
+    <div class="w-full border-2 border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden p-4">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-100">
+        <div class="h-6 bg-gray-300 rounded-md w-56"></div>
+        <div class="h-5 bg-gray-200 rounded w-24"></div>
+      </div>
+      <!-- Contenedor de barras -->
+      <div class="flex items-end justify-between gap-2 sm:gap-4 h-64 w-full px-2 sm:px-6 pt-6 border-b-2 border-gray-200">
+        <div class="w-full bg-gray-300 rounded-t-lg h-[45%] transition-all"></div>
+        <div class="w-full bg-gray-400 rounded-t-lg h-[75%] transition-all"></div>
+        <div class="w-full bg-gray-300 rounded-t-lg h-[60%] transition-all"></div>
+        <div class="w-full bg-gray-400 rounded-t-lg h-[90%] transition-all"></div>
+        <div class="w-full bg-gray-300 rounded-t-lg h-[35%] transition-all"></div>
+        <div class="w-full bg-gray-400 rounded-t-lg h-[80%] transition-all"></div>
+        <div class="w-full bg-gray-300 rounded-t-lg h-[50%] transition-all"></div>
+        <div class="w-full bg-gray-400 rounded-t-lg h-[65%] transition-all"></div>
+        <div class="w-full bg-gray-300 rounded-t-lg h-[85%] transition-all"></div>
+        <div class="w-full bg-gray-400 rounded-t-lg h-[40%] transition-all"></div>
+      </div>
+      <!-- Etiquetas inferiores del gráfico de barras -->
+      <div class="flex justify-between items-center px-2 sm:px-6 pt-3">
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
+        <div class="h-3 bg-gray-300 rounded w-8"></div>
       </div>
     </div>
 
-    <!-- Fila: tree-map + mapa de Ecuador -->
-    <div class="flex flex-col md:flex-row gap-2">
-      <div class="border-2 border-gray-200 rounded-md mb-1 w-full md:w-1/2">
-        <div class="h-7 bg-gray-200 rounded-t-md w-3/4 m-1"></div>
-        <div class="h-[400px] w-full bg-gray-200 rounded-lg"></div>
+    <!-- Fila 4: Tree-map + Mapa de Ecuador (o Donut/Network) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Tree-map / Distribución jerárquica -->
+      <div class="border-2 border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden p-4 flex flex-col">
+        <div class="h-6 bg-gray-300 rounded-md w-44 mb-4"></div>
+        <!-- Grilla estilo Tree-map en sombras de grises -->
+        <div class="grid grid-cols-3 grid-rows-2 gap-2.5 h-80 w-full flex-grow">
+          <div class="col-span-2 row-span-2 bg-gray-300 rounded-lg p-3 flex flex-col justify-end">
+            <div class="h-4 bg-gray-400 rounded w-24 mb-1"></div>
+            <div class="h-6 bg-gray-500 rounded w-16"></div>
+          </div>
+          <div class="col-span-1 row-span-1 bg-gray-200 rounded-lg p-2 flex flex-col justify-end">
+            <div class="h-3 bg-gray-300 rounded w-16 mb-1"></div>
+            <div class="h-4 bg-gray-400 rounded w-10"></div>
+          </div>
+          <div class="col-span-1 row-span-1 bg-gray-200/80 rounded-lg p-2 flex flex-col justify-end">
+            <div class="h-3 bg-gray-300 rounded w-12 mb-1"></div>
+            <div class="h-4 bg-gray-400 rounded w-8"></div>
+          </div>
+        </div>
       </div>
-      <div class="border-2 border-gray-200 rounded-md mb-1 w-full md:w-1/2">
-        <div class="h-7 bg-gray-200 rounded-t-md w-3/4 m-1"></div>
-        <div class="h-[400px] w-full bg-gray-200 rounded-lg"></div>
+
+      <!-- Mapa de Ecuador / Red geográfica en sombras de grises -->
+      <div class="border-2 border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden p-4 flex flex-col">
+        <div class="h-6 bg-gray-300 rounded-md w-48 mb-4"></div>
+        <!-- Simulación visual de mapa o grafo radial -->
+        <div class="relative h-80 w-full bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center overflow-hidden">
+          <!-- Círculos concéntricos de fondo -->
+          <div class="absolute w-64 h-64 border border-gray-200 rounded-full animate-ping opacity-20"></div>
+          <div class="absolute w-48 h-48 border border-gray-200 rounded-full"></div>
+          <div class="absolute w-32 h-32 border border-gray-300 rounded-full"></div>
+          
+          <!-- Nodos y aristas conectadas simulando grafo geográfico -->
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 300 300">
+            <line x1="150" y1="150" x2="80" y2="100" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4" />
+            <line x1="150" y1="150" x2="210" y2="90" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4" />
+            <line x1="150" y1="150" x2="220" y2="200" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4" />
+            <line x1="150" y1="150" x2="100" y2="210" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4" />
+          </svg>
+          
+          <!-- Nodos circulares -->
+          <div class="z-10 w-12 h-12 bg-gray-400 rounded-full shadow flex items-center justify-center border-2 border-white"></div>
+          <div class="absolute top-16 left-16 w-8 h-8 bg-gray-300 rounded-full shadow border-2 border-white"></div>
+          <div class="absolute top-14 right-16 w-9 h-9 bg-gray-300 rounded-full shadow border-2 border-white"></div>
+          <div class="absolute bottom-16 right-20 w-7 h-7 bg-gray-300 rounded-full shadow border-2 border-white"></div>
+          <div class="absolute bottom-14 left-20 w-8 h-8 bg-gray-300 rounded-full shadow border-2 border-white"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Bloque "More Statistics" con íconos -->
-    <div class="flex flex-col justify-center border-2 border-gray-200 rounded-2 mb-2">
-      <div class="h-7 bg-gray-200 w-full"></div>
-      <div class="flex justify-center gap-x-8 px-5 pb-2 pt-3">
+    <!-- Fila 5: Bloque "More Statistics" con íconos circulares -->
+    <div class="flex flex-col justify-center border-2 border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden mb-4 p-4">
+      <div class="h-6 bg-gray-300 rounded-md w-40 mb-4"></div>
+      <div class="flex flex-wrap justify-around gap-6 py-4">
         <div class="flex flex-col items-center justify-center gap-y-2">
-          <div class="h-12 w-12 bg-gray-200 rounded-full"></div>
-          <div class="h-3 bg-gray-200 rounded w-20"></div>
+          <div class="h-14 w-14 bg-gray-300 rounded-full shadow-inner"></div>
+          <div class="h-3 bg-gray-300 rounded w-20"></div>
         </div>
         <div class="flex flex-col items-center justify-center gap-y-2">
-          <div class="h-12 w-12 bg-gray-200 rounded-full"></div>
-          <div class="h-3 bg-gray-200 rounded w-24"></div>
+          <div class="h-14 w-14 bg-gray-300 rounded-full shadow-inner"></div>
+          <div class="h-3 bg-gray-300 rounded w-24"></div>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-y-2">
+          <div class="h-14 w-14 bg-gray-300 rounded-full shadow-inner"></div>
+          <div class="h-3 bg-gray-300 rounded w-16"></div>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-y-2">
+          <div class="h-14 w-14 bg-gray-300 rounded-full shadow-inner"></div>
+          <div class="h-3 bg-gray-300 rounded w-22"></div>
         </div>
       </div>
     </div>
