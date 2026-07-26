@@ -88,7 +88,9 @@ export class ForceDirectedGraph {
               return (d['r'] || 35) + 15; // Radio del nodo + 15px de margen limpio
             })
             .iterations(4)
-        );
+        )
+        .force('x', d3.forceX(options.width / 2).strength(0.05))
+        .force('y', d3.forceY(options.height / 2).strength(0.05));
 
       // Connecting the d3 ticker to an angular event emitter
       this.simulation.on('tick', function () {
@@ -101,6 +103,8 @@ export class ForceDirectedGraph {
 
     /** Updating the central force of the simulation */
     this.simulation.force('centers', d3.forceCenter(options.width / 2, options.height / 2));
+    this.simulation.force('x', d3.forceX(options.width / 2).strength(0.05));
+    this.simulation.force('y', d3.forceY(options.height / 2).strength(0.05));
 
     /** Restarting the simulation internal timer */
     this.simulation.restart();
